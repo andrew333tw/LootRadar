@@ -1,0 +1,8 @@
+[
+  { "id": "tata-marbles", "gameId": "tata-adventure", "name": "彈珠", "tags": ["tata-marbles"] },
+  { "id": "tata-cards", "gameId": "tata-adventure", "name": "卡片 / 卡包", "tags": ["tata-cards"] },
+  { "id": "tata-character", "gameId": "tata-adventure", "name": "特定角色", "tags": ["tata-character"] },
+  { "id": "tata-candy", "gameId": "tata-adventure", "name": "糖果", "tags": ["tata-candy"] },
+  { "id": "tata-rank", "gameId": "tata-adventure", "name": "排名", "tags": ["tata-rank"] },
+  { "id": "tata-event-reward", "gameId": "tata-adventure", "name": "特定活動獎勵", "tags": ["tata-event-reward"] }
+]

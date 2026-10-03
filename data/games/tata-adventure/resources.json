@@ -1,0 +1,92 @@
+[
+  {
+    "id": "tata-marbles",
+    "gameId": "tata-adventure",
+    "name": "彈珠",
+    "unit": "顆",
+    "category": "currency",
+    "evidence": {
+      "level": "COMMUNITY_VERIFIED",
+      "source": "https://clashofcrittersgame.wiki/zh-tw/",
+      "retrievedAt": "2026-10-04",
+      "note": "多個社群來源都把彈珠當成主要免費資源。持有量與上限數字不在此寫死。"
+    }
+  },
+  {
+    "id": "tata-candy",
+    "gameId": "tata-adventure",
+    "name": "糖果",
+    "unit": "顆",
+    "category": "material",
+    "evidence": {
+      "level": "COMMUNITY_REPORT",
+      "source": "https://www.ldplayer.tw/blog/clash-of-critters-beginner-guide.html",
+      "retrievedAt": "2026-10-04",
+      "note": "社群稱糖果用來提升共享等級。精確消耗公式未驗證。"
+    }
+  },
+  {
+    "id": "tata-cards",
+    "gameId": "tata-adventure",
+    "name": "卡片",
+    "unit": "張",
+    "category": "collection",
+    "evidence": {
+      "level": "COMMUNITY_REPORT",
+      "source": "http://a.ptt543.com/thread-521218-1-1.html",
+      "retrievedAt": "2026-10-04",
+      "note": "社群稱重複卡才能跟好友交換。整組獎勵內容未驗證。"
+    }
+  },
+  {
+    "id": "tata-card-packs",
+    "gameId": "tata-adventure",
+    "name": "卡包",
+    "unit": "包",
+    "category": "collection",
+    "evidence": {
+      "level": "COMMUNITY_REPORT",
+      "source": "http://a.ptt543.com/thread-521218-1-1.html",
+      "retrievedAt": "2026-10-04"
+    }
+  },
+  {
+    "id": "tata-capsules",
+    "gameId": "tata-adventure",
+    "name": "探測膠囊",
+    "unit": "個",
+    "category": "gacha",
+    "evidence": {
+      "level": "COMMUNITY_REPORT",
+      "source": "https://www.bluestacks.com/tw/blog/redeem-codes/clash-of-critters-redeem-codes-tw.html",
+      "retrievedAt": "2026-10-04",
+      "note": "社群兌換碼整理常提到塔塔膠囊。官方掉率未收錄。"
+    }
+  },
+  {
+    "id": "tata-biscuits",
+    "gameId": "tata-adventure",
+    "name": "餅乾 / 便當材料",
+    "unit": "份",
+    "category": "food",
+    "evidence": {
+      "level": "COMMUNITY_REPORT",
+      "source": "http://a.ptt543.com/thread-521218-1-1.html",
+      "retrievedAt": "2026-10-04",
+      "note": "社群建議小餅乾留給便當，不要隨便吃。這是攻略意見，不是官方規則。"
+    }
+  },
+  {
+    "id": "tata-event-currency",
+    "gameId": "tata-adventure",
+    "name": "活動貨幣",
+    "unit": "點",
+    "category": "event",
+    "evidence": {
+      "level": "UNKNOWN",
+      "source": "玩家庫存",
+      "retrievedAt": "2026-10-04",
+      "note": "活動貨幣名稱會換，目錄只保留欄位。"
+    }
+  }
+]

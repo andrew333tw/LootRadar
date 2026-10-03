@@ -1,0 +1,66 @@
+[
+  {
+    "id": "code-weeklygift",
+    "gameId": "tata-adventure",
+    "code": "weeklygift",
+    "rewardLabel": "社群寫過 50 彈珠 + 5 膠囊；其他整理站沒有列內容",
+    "expiry": null,
+    "evidence": {
+      "level": "COMMUNITY_REPORT",
+      "source": "https://www.bluestacks.com/tw/blog/redeem-codes/clash-of-critters-redeem-codes-tw.html",
+      "retrievedAt": "2026-10-04",
+      "note": "獎勵只來自單一整理文，且 2026-10-04 沒有在遊戲內複核。可能已失效。"
+    }
+  },
+  {
+    "id": "code-tatamoon",
+    "gameId": "tata-adventure",
+    "code": "tatamoon",
+    "rewardLabel": "社群整理：彈珠x20、糖果x1800、銀磚x15、金磚x3、藍色扭蛋x1、餅乾x1",
+    "expiry": null,
+    "evidence": {
+      "level": "COMMUNITY_REPORT",
+      "source": "https://www.ludens.com.tw/cczh-coupon/",
+      "retrievedAt": "2026-10-04",
+      "note": "Ludens 頁面標最後更新 2026-09-29。是否仍可兌換未知。"
+    }
+  },
+  {
+    "id": "code-welcome2026",
+    "gameId": "tata-adventure",
+    "code": "welcome2026",
+    "rewardLabel": "歡迎禮包（內容依遊戲內為準）",
+    "expiry": null,
+    "evidence": {
+      "level": "COMMUNITY_REPORT",
+      "source": "https://www.ludens.com.tw/cczh-coupon/",
+      "retrievedAt": "2026-10-04",
+      "note": "多個整理站都列過此碼。有效期限未知。"
+    }
+  },
+  {
+    "id": "code-welcomegift",
+    "gameId": "tata-adventure",
+    "code": "welcomegift",
+    "rewardLabel": "有來源寫 100 彈珠 + 5 膠囊 + 1 稀有膠囊，未經官方複核",
+    "expiry": null,
+    "evidence": {
+      "level": "COMMUNITY_REPORT",
+      "source": "https://www.bluestacks.com/tw/blog/redeem-codes/clash-of-critters-redeem-codes-tw.html",
+      "retrievedAt": "2026-10-04"
+    }
+  },
+  {
+    "id": "code-hellotatari",
+    "gameId": "tata-adventure",
+    "code": "hellotatari",
+    "rewardLabel": "有來源標示可能已過期",
+    "expiry": null,
+    "evidence": {
+      "level": "COMMUNITY_REPORT",
+      "source": "https://www.bluestacks.com/tw/blog/redeem-codes/clash-of-critters-redeem-codes-tw.html",
+      "retrievedAt": "2026-10-04",
+      "note": "BlueStacks 文寫部分來源標示已過期或接近過期。預設不要當成還能領。"
+    }
+  }
+]

@@ -1,0 +1,66 @@
+[
+  {
+    "id": "pb-coins",
+    "gameId": "pikmin-bloom",
+    "name": "金幣",
+    "unit": "枚",
+    "category": "currency",
+    "evidence": {
+      "level": "OFFICIAL",
+      "source": "https://niantic.helpshift.com/hc/en/23-pikmin-bloom/faq/2961-bonus-coins/",
+      "retrievedAt": "2026-10-04",
+      "note": "種花獎金幣是官方機制。玩家持有量由自己填。"
+    }
+  },
+  {
+    "id": "pb-petals",
+    "gameId": "pikmin-bloom",
+    "name": "花瓣",
+    "unit": "片",
+    "category": "material",
+    "evidence": {
+      "level": "OFFICIAL",
+      "source": "https://niantic.helpshift.com/hc/en/23-pikmin-bloom/faq/2855-planting-flowers/",
+      "retrievedAt": "2026-10-04"
+    }
+  },
+  {
+    "id": "pb-nectar",
+    "gameId": "pikmin-bloom",
+    "name": "花蜜 / 精華",
+    "unit": "份",
+    "category": "material",
+    "evidence": {
+      "level": "UNKNOWN",
+      "source": "玩家庫存",
+      "retrievedAt": "2026-10-04",
+      "note": "精華與花蜜的當前產量會隨活動改，目錄不寫死數量。"
+    }
+  },
+  {
+    "id": "pb-event-currency",
+    "gameId": "pikmin-bloom",
+    "name": "活動貨幣",
+    "unit": "點",
+    "category": "event",
+    "evidence": {
+      "level": "UNKNOWN",
+      "source": "玩家庫存",
+      "retrievedAt": "2026-10-04",
+      "note": "名稱與匯率依當期活動而定。"
+    }
+  },
+  {
+    "id": "pb-seedlings",
+    "gameId": "pikmin-bloom",
+    "name": "花苗",
+    "unit": "株",
+    "category": "expedition",
+    "evidence": {
+      "level": "OFFICIAL",
+      "source": "https://niantic.helpshift.com/hc/en/23-pikmin-bloom/faq/3054-items-and-their-effects/",
+      "retrievedAt": "2026-10-04",
+      "note": "探測器至少會找到一株花苗。種類依 Places Nearby。"
+    }
+  }
+]

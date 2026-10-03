@@ -1,0 +1,22 @@
+[
+  {
+    "id": "pb-sample-mission",
+    "gameId": "pikmin-bloom",
+    "title": "季節活動任務（範例）",
+    "start": null,
+    "end": null,
+    "sample": true,
+    "sampleOffset": { "startHours": -30, "endHours": 36 },
+    "freeRewards": [
+      { "label": "活動任務免費獎勵", "quantity": null },
+      { "label": "活動貨幣", "resourceId": "pb-event-currency", "quantity": null }
+    ],
+    "evidence": {
+      "level": "INFERRED",
+      "source": "LootRadar sample",
+      "retrievedAt": "2026-10-04",
+      "note": "這是範例檔期，不是 2026-10-04 的官方活動。"
+    },
+    "summary": "範例：還有免費任務獎可以推進。真實檔期請在活動頁自己補上開始與結束。"
+  }
+]

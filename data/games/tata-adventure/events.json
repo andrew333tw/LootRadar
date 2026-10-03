@@ -1,0 +1,55 @@
+[
+  {
+    "id": "tata-sample-island",
+    "gameId": "tata-adventure",
+    "title": "海島奪金（範例活動）",
+    "start": null,
+    "end": null,
+    "sample": true,
+    "sampleOffset": { "startHours": -20, "endHours": 2.5 },
+    "freeRewards": [
+      { "label": "活動免費獎勵", "quantity": null },
+      { "label": "活動貨幣", "resourceId": "tata-event-currency", "quantity": null }
+    ],
+    "requiredResourceId": "tata-marbles",
+    "evidence": {
+      "level": "INFERRED",
+      "source": "LootRadar sample",
+      "retrievedAt": "2026-10-04",
+      "note": "範例活動，用來示範「快結束」與「現在領 / 延後領 / 保留彈珠」。不是目前官方檔期。"
+    },
+    "summary": "範例：活動快結束。免費獎勵先領；彈珠不要為了低報酬的加碼現在花光。"
+  },
+  {
+    "id": "tata-sample-later",
+    "gameId": "tata-adventure",
+    "title": "可延後領取的跨活動獎勵（範例）",
+    "start": null,
+    "end": null,
+    "sample": true,
+    "sampleOffset": { "startHours": -5, "endHours": 48 },
+    "freeRewards": [{ "label": "可留到下一檔再用的免費獎勵", "quantity": null }],
+    "evidence": {
+      "level": "INFERRED",
+      "source": "LootRadar sample",
+      "retrievedAt": "2026-10-04",
+      "note": "範例決策，不是某一個已驗證活動的官方規則。"
+    },
+    "summary": "範例：這筆獎勵現在領的邊際價值較低，而且 48 小時內都還在。"
+  },
+  {
+    "id": "tata-card-album",
+    "gameId": "tata-adventure",
+    "title": "卡冊整組",
+    "start": null,
+    "end": null,
+    "freeRewards": [{ "label": "集滿一組的資源獎勵", "quantity": null }],
+    "evidence": {
+      "level": "COMMUNITY_REPORT",
+      "source": "http://a.ptt543.com/thread-521218-1-1.html",
+      "retrievedAt": "2026-10-04",
+      "note": "社群稱集滿一組有獎勵。獎勵內容與張數未驗證，進度由玩家填。"
+    },
+    "summary": "缺卡時先換重複卡，不要為了單張去花彈珠。"
+  }
+]

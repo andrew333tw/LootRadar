@@ -1,0 +1,7 @@
+[
+  { "id": "pb-fruit", "gameId": "pikmin-bloom", "name": "水果", "tags": ["pb-fruit"] },
+  { "id": "pb-decor", "gameId": "pikmin-bloom", "name": "特定 Decor", "tags": ["pb-decor"] },
+  { "id": "pb-event-pikmin", "gameId": "pikmin-bloom", "name": "活動 Pikmin", "tags": ["pb-event-pikmin"] },
+  { "id": "pb-coins", "gameId": "pikmin-bloom", "name": "金幣", "tags": ["pb-coins"] },
+  { "id": "pb-nectar", "gameId": "pikmin-bloom", "name": "花瓣 / 精華", "tags": ["pb-nectar"] }
+]
