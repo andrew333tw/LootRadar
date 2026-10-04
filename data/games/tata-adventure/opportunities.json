@@ -4,83 +4,134 @@
     "gameId": "tata-adventure",
     "title": "每日免費包",
     "category": "daily",
-    "reward": { "resourceId": "tata-marbles", "quantity": null, "approximate": false, "label": "每日免費包（精確內容未驗證）" },
+    "reward": {
+      "resourceId": "tata-marbles",
+      "quantity": null,
+      "approximate": false,
+      "label": "每日免費包（精確內容未驗證）"
+    },
     "estimatedValue": 74,
     "estimatedEffort": 0.4,
     "cost": 0,
-    "reset": { "type": "daily", "hour": 0, "minute": 0 },
+    "reset": {
+      "type": "none"
+    },
     "evidence": {
       "level": "COMMUNITY_REPORT",
       "source": "https://games.gg/zh-Hant/clash-of-critters/guides/clash-of-critters-badge-dojo-%E6%8C%87%E5%8D%97%E5%BE%BD%E7%AB%A0%E9%9A%8E%E7%B4%9A%E8%88%87%E7%8D%8E%E5%8B%B1/",
       "retrievedAt": "2026-10-04",
-      "note": "有攻略把商城每日禮包寫成約 60 彈珠。本目錄不採用該數字，只追蹤「有沒有領」。重置時點未用官方文件核對，暫用本地午夜，可在資料檔改。"
+      "note": "有攻略把商城每日禮包寫成約 60 彈珠。本目錄不採用該數字。重置鐘點沒有官方來源，不假設午夜。"
     },
     "policy": "claim",
     "laterValue": 0,
-    "goalTags": ["tata-marbles"],
+    "goalTags": [
+      "tata-marbles"
+    ],
     "action": "先領每日免費包",
-    "why": "成本是 0。過了今天這窗就沒了，所以未領時排在花錢之前。",
-    "active": true
+    "why": "社群說有每日免費包，但今天的內容和重置時間都還沒核對，所以先放在待確認。",
+    "active": true,
+    "freshness": "UNVERIFIED",
+    "verifiedAt": null,
+    "free": true,
+    "sourceType": "community",
+    "recurrence": "unknown"
   },
   {
     "id": "tata-daily-tasks",
     "gameId": "tata-adventure",
     "title": "每日任務",
     "category": "daily",
-    "reward": { "resourceId": "tata-marbles", "quantity": null, "approximate": false, "label": "每日任務獎勵（數量未驗證）" },
+    "reward": {
+      "resourceId": "tata-marbles",
+      "quantity": null,
+      "approximate": false,
+      "label": "每日任務獎勵（數量未驗證）"
+    },
     "estimatedValue": 66,
     "estimatedEffort": 2,
     "cost": 0,
-    "reset": { "type": "daily", "hour": 0, "minute": 0 },
+    "reset": {
+      "type": "none"
+    },
     "evidence": {
       "level": "COMMUNITY_VERIFIED",
       "source": "https://clashofcrittersgame.wiki/zh-tw/",
       "retrievedAt": "2026-10-04",
-      "note": "多個社群來源都把每日任務當成穩定免費來源。單項獎勵數字不寫死。"
+      "note": "多個社群來源都把每日任務當成穩定免費來源。單項獎勵和重置鐘點都不寫死。"
     },
     "policy": "claim",
     "laterValue": 0,
-    "goalTags": ["tata-marbles", "tata-candy"],
+    "goalTags": [
+      "tata-marbles",
+      "tata-candy"
+    ],
     "action": "把今天的每日任務清掉",
-    "why": "沒做就過期。它不花彈珠。",
-    "active": true
+    "why": "結構上看起來是每日任務，但沒有官方重置時間，不能當成今天確定沒拿。",
+    "active": true,
+    "freshness": "UNVERIFIED",
+    "verifiedAt": null,
+    "free": true,
+    "sourceType": "community",
+    "recurrence": "unknown"
   },
   {
     "id": "tata-marble-tree",
     "gameId": "tata-adventure",
     "title": "彈珠樹",
     "category": "daily",
-    "reward": { "resourceId": "tata-marbles", "quantity": null, "approximate": true, "label": "大樹累積的彈珠（速率未驗證）" },
+    "reward": {
+      "resourceId": "tata-marbles",
+      "quantity": null,
+      "approximate": true,
+      "label": "大樹累積的彈珠（速率未驗證）"
+    },
     "estimatedValue": 72,
     "estimatedEffort": 0.5,
     "cost": 0,
-    "reset": { "type": "daily", "hour": 0, "minute": 0 },
+    "reset": {
+      "type": "none"
+    },
     "evidence": {
       "level": "COMMUNITY_REPORT",
       "source": "http://a.ptt543.com/thread-521218-1-1.html",
       "retrievedAt": "2026-10-04",
-      "note": "社群稱大樹會累積彈珠，彈珠臺滿了就領不到。每小時產量與上限沒有官方數字，所以不寫死。"
+      "note": "社群稱大樹會累積彈珠。每小時產量、上限和重置鐘點都沒有官方數字。"
     },
     "policy": "claim",
     "laterValue": 0,
-    "goalTags": ["tata-marbles"],
+    "goalTags": [
+      "tata-marbles"
+    ],
     "action": "先清一點彈珠，再領大樹",
     "why": "社群回報臺面滿了會領不到大樹。領取本身免費，但要先騰出空間。",
     "active": true,
     "prerequisite": "彈珠臺還有空間",
-    "progressFlag": "tata-tree"
+    "progressFlag": "tata-tree",
+    "freshness": "UNVERIFIED",
+    "verifiedAt": null,
+    "free": true,
+    "sourceType": "community",
+    "recurrence": "unknown"
   },
   {
     "id": "tata-save-marbles",
     "gameId": "tata-adventure",
     "title": "彈珠先不要花",
     "category": "spend",
-    "reward": { "resourceId": "tata-marbles", "quantity": null, "approximate": false, "label": "把彈珠留到更好的獎池" },
+    "reward": {
+      "resourceId": "tata-marbles",
+      "quantity": null,
+      "approximate": false,
+      "label": "把彈珠留到更好的獎池"
+    },
     "estimatedValue": 84,
     "marginalValue": 25,
     "estimatedEffort": 0.2,
     "cost": 0,
-    "reset": { "type": "event", "eventId": "tata-sample-island" },
+    "reset": {
+      "type": "event",
+      "eventId": "tata-sample-island"
+    },
     "eventId": "tata-sample-island",
     "evidence": {
       "level": "INFERRED",
@@ -90,23 +141,38 @@
     },
     "policy": "spend-or-save",
     "laterValue": 80,
-    "goalTags": ["tata-marbles", "tata-event-reward"],
+    "goalTags": [
+      "tata-marbles",
+      "tata-event-reward"
+    ],
     "action": "彈珠先不要花",
     "why": "範例活動剩下的加碼報酬不高，而且下一檔還用得到彈珠。先領免費的，彈珠留著。",
     "active": true,
-    "sample": true
+    "sample": true,
+    "freshness": "UNVERIFIED",
+    "verifiedAt": null,
+    "free": true,
+    "sourceType": "inferred",
+    "recurrence": "event"
   },
   {
     "id": "tata-spend-character",
     "gameId": "tata-adventure",
     "title": "角色膠囊可以花",
     "category": "spend",
-    "reward": { "resourceId": "tata-capsules", "quantity": null, "approximate": false, "label": "對準目標角色的膠囊" },
+    "reward": {
+      "resourceId": "tata-capsules",
+      "quantity": null,
+      "approximate": false,
+      "label": "對準目標角色的膠囊"
+    },
     "estimatedValue": 76,
     "marginalValue": 70,
     "estimatedEffort": 1,
     "cost": 1,
-    "reset": { "type": "none" },
+    "reset": {
+      "type": "none"
+    },
     "evidence": {
       "level": "INFERRED",
       "source": "LootRadar sample",
@@ -115,23 +181,38 @@
     },
     "policy": "spend-or-save",
     "laterValue": 80,
-    "goalTags": ["tata-character"],
+    "goalTags": [
+      "tata-character"
+    ],
     "action": "目標角色的膠囊可以花",
     "why": "你正在追這個角色，現在花的邊際價值高過繼續囤。若目標換了，建議會改回保留。",
     "active": true,
-    "sample": true
+    "sample": true,
+    "freshness": "UNVERIFIED",
+    "verifiedAt": null,
+    "free": false,
+    "sourceType": "inferred",
+    "recurrence": "event"
   },
   {
     "id": "tata-claim-later",
     "gameId": "tata-adventure",
     "title": "這筆獎勵晚點領",
     "category": "event",
-    "reward": { "resourceId": "tata-event-currency", "quantity": null, "approximate": false, "label": "可延後的免費獎勵" },
+    "reward": {
+      "resourceId": "tata-event-currency",
+      "quantity": null,
+      "approximate": false,
+      "label": "可延後的免費獎勵"
+    },
     "estimatedValue": 44,
     "marginalValue": 40,
     "estimatedEffort": 1,
     "cost": 0,
-    "reset": { "type": "event", "eventId": "tata-sample-later" },
+    "reset": {
+      "type": "event",
+      "eventId": "tata-sample-later"
+    },
     "eventId": "tata-sample-later",
     "evidence": {
       "level": "INFERRED",
@@ -141,22 +222,37 @@
     },
     "policy": "defer-claim",
     "laterValue": 90,
-    "goalTags": ["tata-event-reward"],
+    "goalTags": [
+      "tata-event-reward"
+    ],
     "action": "這筆晚點領",
     "why": "還有約兩天，現在領的用途比較低。等你缺的那個獎勵出現再領；剩不到 6 小時會改口叫你先領。",
     "active": true,
-    "sample": true
+    "sample": true,
+    "freshness": "UNVERIFIED",
+    "verifiedAt": null,
+    "free": true,
+    "sourceType": "inferred",
+    "recurrence": "event"
   },
   {
     "id": "tata-island-free",
     "gameId": "tata-adventure",
     "title": "海島奪金免費獎勵",
     "category": "event",
-    "reward": { "resourceId": "tata-event-currency", "quantity": null, "approximate": false, "label": "範例活動的免費獎勵" },
+    "reward": {
+      "resourceId": "tata-event-currency",
+      "quantity": null,
+      "approximate": false,
+      "label": "範例活動的免費獎勵"
+    },
     "estimatedValue": 80,
     "estimatedEffort": 1.5,
     "cost": 0,
-    "reset": { "type": "event", "eventId": "tata-sample-island" },
+    "reset": {
+      "type": "event",
+      "eventId": "tata-sample-island"
+    },
     "eventId": "tata-sample-island",
     "evidence": {
       "level": "INFERRED",
@@ -166,45 +262,73 @@
     },
     "policy": "claim",
     "laterValue": 0,
-    "goalTags": ["tata-event-reward"],
+    "goalTags": [
+      "tata-event-reward"
+    ],
     "action": "活動免費獎勵現在領",
     "why": "範例活動快結束，免費獎勵沒領就沒了。這筆不花彈珠。",
     "active": true,
-    "sample": true
+    "sample": true,
+    "freshness": "UNVERIFIED",
+    "verifiedAt": null,
+    "free": true,
+    "sourceType": "inferred",
+    "recurrence": "event"
   },
   {
     "id": "tata-boss",
     "gameId": "tata-adventure",
     "title": "首領挑戰",
     "category": "daily",
-    "reward": { "resourceId": "tata-marbles", "quantity": null, "approximate": false, "label": "首領免費獎勵（數量未驗證）" },
+    "reward": {
+      "resourceId": "tata-marbles",
+      "quantity": null,
+      "approximate": false,
+      "label": "首領免費獎勵（數量未驗證）"
+    },
     "estimatedValue": 68,
     "estimatedEffort": 2,
     "cost": 0,
-    "reset": { "type": "daily", "hour": 0, "minute": 0 },
+    "reset": {
+      "type": "none"
+    },
     "evidence": {
       "level": "COMMUNITY_VERIFIED",
       "source": "https://clashofcrittersgame.wiki/zh-tw/",
       "retrievedAt": "2026-10-04",
-      "note": "多個來源都把 Boss / 首領挑戰列為每日免費彈珠來源。掉落數不寫死。"
+      "note": "多個來源都把首領挑戰列為免費彈珠來源。掉落數和重置鐘點不寫死。"
     },
     "policy": "claim",
     "laterValue": 0,
-    "goalTags": ["tata-marbles"],
+    "goalTags": [
+      "tata-marbles"
+    ],
     "action": "今天的首領先打",
-    "why": "社群把它當成最穩的免費彈珠來源之一。沒打就過今天。",
-    "active": true
+    "why": "社群把它當成免費來源，但今天是否還有次數沒有官方確認。",
+    "active": true,
+    "freshness": "UNVERIFIED",
+    "verifiedAt": null,
+    "free": true,
+    "sourceType": "community",
+    "recurrence": "unknown"
   },
   {
     "id": "tata-dojo",
     "gameId": "tata-adventure",
     "title": "徽章道館",
     "category": "manual",
-    "reward": { "resourceId": "tata-marbles", "quantity": null, "approximate": false, "label": "道館關卡獎勵（精確數字未收錄）" },
+    "reward": {
+      "resourceId": "tata-marbles",
+      "quantity": null,
+      "approximate": false,
+      "label": "道館關卡獎勵（精確數字未收錄）"
+    },
     "estimatedValue": 62,
     "estimatedEffort": 3,
     "cost": 0,
-    "reset": { "type": "none" },
+    "reset": {
+      "type": "none"
+    },
     "evidence": {
       "level": "COMMUNITY_VERIFIED",
       "source": "https://games.gg/zh-Hant/clash-of-critters/guides/clash-of-critters-badge-dojo-%E6%8C%87%E5%8D%97%E5%BE%BD%E7%AB%A0%E9%9A%8E%E7%B4%9A%E8%88%87%E7%8D%8E%E5%8B%B1/",
@@ -213,22 +337,37 @@
     },
     "policy": "claim",
     "laterValue": 20,
-    "goalTags": ["tata-marbles", "tata-character"],
+    "goalTags": [
+      "tata-marbles",
+      "tata-character"
+    ],
     "action": "打得過的道館層先推進",
     "why": "徽章是永久加成，而且關卡獎不跟每天一起消失。卡關就不要硬刷。",
     "active": true,
-    "prerequisite": "該屬性塔塔 7 隻（社群複核，非官方文件）"
+    "prerequisite": "該屬性塔塔 7 隻（社群複核，非官方文件）",
+    "freshness": "UNVERIFIED",
+    "verifiedAt": null,
+    "free": true,
+    "sourceType": "community",
+    "recurrence": "unknown"
   },
   {
     "id": "tata-card-set",
     "gameId": "tata-adventure",
     "title": "卡冊缺卡",
     "category": "manual",
-    "reward": { "resourceId": "tata-cards", "quantity": null, "approximate": false, "label": "整組獎勵（內容未驗證）" },
+    "reward": {
+      "resourceId": "tata-cards",
+      "quantity": null,
+      "approximate": false,
+      "label": "整組獎勵（內容未驗證）"
+    },
     "estimatedValue": 50,
     "estimatedEffort": 1,
     "cost": 0,
-    "reset": { "type": "none" },
+    "reset": {
+      "type": "none"
+    },
     "evidence": {
       "level": "COMMUNITY_REPORT",
       "source": "http://a.ptt543.com/thread-521218-1-1.html",
@@ -237,22 +376,36 @@
     },
     "policy": "claim",
     "laterValue": 0,
-    "goalTags": ["tata-cards"],
+    "goalTags": [
+      "tata-cards"
+    ],
     "action": "用重複卡補缺的那張",
     "why": "缺卡時換卡成本是 0。不要為了一張卡去開彈珠。",
     "active": true,
-    "progressFlag": "tata-card-album"
+    "progressFlag": "tata-card-album",
+    "freshness": "UNVERIFIED",
+    "verifiedAt": null,
+    "free": true,
+    "sourceType": "community",
+    "recurrence": "unknown"
   },
   {
     "id": "tata-friend-trade",
     "gameId": "tata-adventure",
     "title": "好友換卡",
     "category": "manual",
-    "reward": { "resourceId": "tata-cards", "quantity": null, "approximate": false, "label": "重複卡交換" },
+    "reward": {
+      "resourceId": "tata-cards",
+      "quantity": null,
+      "approximate": false,
+      "label": "重複卡交換"
+    },
     "estimatedValue": 34,
     "estimatedEffort": 1,
     "cost": 0,
-    "reset": { "type": "none" },
+    "reset": {
+      "type": "none"
+    },
     "evidence": {
       "level": "COMMUNITY_REPORT",
       "source": "http://a.ptt543.com/thread-521218-1-1.html",
@@ -261,21 +414,35 @@
     },
     "policy": "claim",
     "laterValue": 0,
-    "goalTags": ["tata-cards"],
+    "goalTags": [
+      "tata-cards"
+    ],
     "action": "有重複卡就拿去換缺卡",
     "why": "交換不花彈珠。沒有重複卡就先觀望。",
-    "active": true
+    "active": true,
+    "freshness": "UNVERIFIED",
+    "verifiedAt": null,
+    "free": true,
+    "sourceType": "community",
+    "recurrence": "unknown"
   },
   {
     "id": "tata-story",
     "gameId": "tata-adventure",
     "title": "主線 / 開地獎勵",
     "category": "manual",
-    "reward": { "resourceId": null, "quantity": null, "approximate": false, "label": "推進獎勵（內容依關卡）" },
+    "reward": {
+      "resourceId": null,
+      "quantity": null,
+      "approximate": false,
+      "label": "推進獎勵（內容依關卡）"
+    },
     "estimatedValue": 40,
     "estimatedEffort": 3,
     "cost": 0,
-    "reset": { "type": "none" },
+    "reset": {
+      "type": "none"
+    },
     "evidence": {
       "level": "UNKNOWN",
       "source": "玩家進度",
@@ -284,21 +451,36 @@
     },
     "policy": "claim",
     "laterValue": 0,
-    "goalTags": ["tata-marbles", "tata-character"],
+    "goalTags": [
+      "tata-marbles",
+      "tata-character"
+    ],
     "action": "卡關就先做每日，能過再推",
-    "why": "一次性獎勵不會在午夜消失，所以排在會過期的免費包後面。",
-    "active": true
+    "why": "主線看起來是一次性的，但每一關內容未知，所以留在待確認。",
+    "active": true,
+    "freshness": "UNVERIFIED",
+    "verifiedAt": null,
+    "free": true,
+    "sourceType": "unknown",
+    "recurrence": "unknown"
   },
   {
     "id": "tata-territory",
     "gameId": "tata-adventure",
     "title": "領地戰",
     "category": "manual",
-    "reward": { "resourceId": null, "quantity": null, "approximate": false, "label": "領地獎勵（未驗證）" },
+    "reward": {
+      "resourceId": null,
+      "quantity": null,
+      "approximate": false,
+      "label": "領地獎勵（未驗證）"
+    },
     "estimatedValue": 30,
     "estimatedEffort": 2,
     "cost": 0,
-    "reset": { "type": "none" },
+    "reset": {
+      "type": "none"
+    },
     "evidence": {
       "level": "UNKNOWN",
       "source": "尚未用官方或複核來源核對",
@@ -307,21 +489,35 @@
     },
     "policy": "claim",
     "laterValue": 0,
-    "goalTags": ["tata-rank"],
+    "goalTags": [
+      "tata-rank"
+    ],
     "action": "有開再記進活動",
     "why": "規則還沒核對，不把它排進今天必做。",
-    "active": true
+    "active": true,
+    "freshness": "UNVERIFIED",
+    "verifiedAt": null,
+    "free": true,
+    "sourceType": "unknown",
+    "recurrence": "unknown"
   },
   {
     "id": "tata-stink-rank",
     "gameId": "tata-adventure",
     "title": "臭潮排行",
     "category": "manual",
-    "reward": { "resourceId": null, "quantity": null, "approximate": false, "label": "排行獎勵（未驗證）" },
+    "reward": {
+      "resourceId": null,
+      "quantity": null,
+      "approximate": false,
+      "label": "排行獎勵（未驗證）"
+    },
     "estimatedValue": 32,
     "estimatedEffort": 2,
     "cost": 0,
-    "reset": { "type": "none" },
+    "reset": {
+      "type": "none"
+    },
     "evidence": {
       "level": "COMMUNITY_REPORT",
       "source": "https://www.biubiu001.com/news/230278.html",
@@ -330,21 +526,35 @@
     },
     "policy": "claim",
     "laterValue": 0,
-    "goalTags": ["tata-rank"],
+    "goalTags": [
+      "tata-rank"
+    ],
     "action": "只有在追排名時才加碼",
     "why": "沒把排名設成目標時，不要為了排行去花彈珠。",
-    "active": true
+    "active": true,
+    "freshness": "UNVERIFIED",
+    "verifiedAt": null,
+    "free": true,
+    "sourceType": "community",
+    "recurrence": "unknown"
   },
   {
     "id": "tata-achievement",
     "gameId": "tata-adventure",
     "title": "成就",
     "category": "manual",
-    "reward": { "resourceId": "tata-marbles", "quantity": null, "approximate": false, "label": "成就獎勵（數量未驗證）" },
+    "reward": {
+      "resourceId": "tata-marbles",
+      "quantity": null,
+      "approximate": false,
+      "label": "成就獎勵（數量未驗證）"
+    },
     "estimatedValue": 28,
     "estimatedEffort": 1,
     "cost": 0,
-    "reset": { "type": "none" },
+    "reset": {
+      "type": "none"
+    },
     "evidence": {
       "level": "COMMUNITY_REPORT",
       "source": "https://clashofcrittersgame.wiki/zh-tw/",
@@ -353,32 +563,127 @@
     },
     "policy": "claim",
     "laterValue": 0,
-    "goalTags": ["tata-marbles"],
+    "goalTags": [
+      "tata-marbles"
+    ],
     "action": "差一點就能領的成就先收",
-    "why": "成就通常不會午夜消失，所以排在每日免費包後面。",
-    "active": true
+    "why": "成就被社群列成來源，但沒有項目清單，所以留在待確認。",
+    "active": true,
+    "freshness": "UNVERIFIED",
+    "verifiedAt": null,
+    "free": true,
+    "sourceType": "community",
+    "recurrence": "unknown"
   },
   {
-    "id": "tata-activities",
+    "id": "tata-fishing",
     "gameId": "tata-adventure",
-    "title": "釣魚 / 圍獵 / 尋寶",
+    "title": "釣魚",
     "category": "event",
-    "reward": { "resourceId": null, "quantity": null, "approximate": false, "label": "活動模式免費獎勵（未驗證）" },
-    "estimatedValue": 36,
+    "reward": {
+      "resourceId": null,
+      "quantity": null,
+      "approximate": false,
+      "label": "免費獎勵未驗證，今天有沒有開也未驗證"
+    },
+    "estimatedValue": 20,
     "estimatedEffort": 2,
     "cost": 0,
-    "reset": { "type": "none" },
+    "reset": {
+      "type": "none"
+    },
+    "freshness": "UNVERIFIED",
+    "verifiedAt": null,
+    "sourceType": "community",
+    "free": true,
+    "recurrence": "unknown",
     "evidence": {
-      "level": "UNKNOWN",
-      "source": "尚未核對當期是否開放",
+      "level": "COMMUNITY_REPORT",
+      "source": "https://cc-zh-tw.farlightgames.com/",
       "retrievedAt": "2026-10-04",
-      "note": "這些模式可能輪替。沒有當期時間表，不假裝今天一定開。"
+      "note": "官方站與商店頁看得到玩法名稱，沒有今天的檔期、重置或數量。不放進今天確定可拿。"
     },
     "policy": "claim",
     "laterValue": 0,
-    "goalTags": ["tata-event-reward"],
-    "action": "遊戲裡有開再記一筆活動",
-    "why": "沒有已驗證檔期。用活動頁自己加結束時間之後，才會進入倒數。",
+    "goalTags": [
+      "tata-event-reward"
+    ],
+    "action": "先看遊戲裡今天有沒有釣魚",
+    "why": "只有名稱被公開資料提到。沒有當期時間表，不能當成今天一定有。",
+    "active": true
+  },
+  {
+    "id": "tata-hunt",
+    "gameId": "tata-adventure",
+    "title": "圍獵",
+    "category": "event",
+    "reward": {
+      "resourceId": null,
+      "quantity": null,
+      "approximate": false,
+      "label": "免費獎勵未驗證，今天有沒有開也未驗證"
+    },
+    "estimatedValue": 20,
+    "estimatedEffort": 2,
+    "cost": 0,
+    "reset": {
+      "type": "none"
+    },
+    "freshness": "UNVERIFIED",
+    "verifiedAt": null,
+    "sourceType": "community",
+    "free": true,
+    "recurrence": "unknown",
+    "evidence": {
+      "level": "COMMUNITY_REPORT",
+      "source": "https://cc-zh-tw.farlightgames.com/",
+      "retrievedAt": "2026-10-04",
+      "note": "官方站與商店頁看得到玩法名稱，沒有今天的檔期、重置或數量。不放進今天確定可拿。"
+    },
+    "policy": "claim",
+    "laterValue": 0,
+    "goalTags": [
+      "tata-event-reward"
+    ],
+    "action": "先看遊戲裡今天有沒有圍獵",
+    "why": "只有名稱被公開資料提到。沒有當期時間表，不能當成今天一定有。",
+    "active": true
+  },
+  {
+    "id": "tata-treasure",
+    "gameId": "tata-adventure",
+    "title": "尋寶",
+    "category": "event",
+    "reward": {
+      "resourceId": null,
+      "quantity": null,
+      "approximate": false,
+      "label": "免費獎勵未驗證，今天有沒有開也未驗證"
+    },
+    "estimatedValue": 20,
+    "estimatedEffort": 2,
+    "cost": 0,
+    "reset": {
+      "type": "none"
+    },
+    "freshness": "UNVERIFIED",
+    "verifiedAt": null,
+    "sourceType": "community",
+    "free": true,
+    "recurrence": "unknown",
+    "evidence": {
+      "level": "COMMUNITY_REPORT",
+      "source": "https://cc-zh-tw.farlightgames.com/",
+      "retrievedAt": "2026-10-04",
+      "note": "官方站與商店頁看得到玩法名稱，沒有今天的檔期、重置或數量。不放進今天確定可拿。"
+    },
+    "policy": "claim",
+    "laterValue": 0,
+    "goalTags": [
+      "tata-event-reward"
+    ],
+    "action": "先看遊戲裡今天有沒有尋寶",
+    "why": "只有名稱被公開資料提到。沒有當期時間表，不能當成今天一定有。",
     "active": true
   }
 ]

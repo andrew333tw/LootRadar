@@ -2,7 +2,10 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
 
+const base = process.env.LOOTRADAR_BASE || "/";
+
 export default defineConfig({
+  base,
   plugins: [
     react(),
     VitePWA({
@@ -13,8 +16,8 @@ export default defineConfig({
         short_name: "LootRadar",
         description: "今天還有什麼免費的？",
         lang: "zh-Hant",
-        start_url: "/",
-        scope: "/",
+        start_url: base,
+        scope: base,
         display: "standalone",
         background_color: "#121613",
         theme_color: "#0f6e56",

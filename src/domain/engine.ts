@@ -1,15 +1,18 @@
 import { loadCatalog } from "./catalog";
 import { classifyAction } from "./recommend";
-import { dailyWindow, eventWindow, resolveClaimState, wasMissed, weeklyWindow } from "./reset";
+import { dailyWindow, eventWindow, localDateKey, resolveClaimState, shiftDate, wasMissed, weeklyWindow, zonedTimeToUtc } from "./reset";
 import { evidenceConfidence, goalRelevance, priorityScore, urgencyFromDeadline } from "./score";
 import type {
   Catalog,
   ClaimState,
   EventDefinition,
+  Freshness,
   Materialized,
   OpportunityDefinition,
   PlayerState,
+  RadarState,
   Recommendation,
+  TruthLane,
   ViewEvent,
   ViewOpportunity,
 } from "./types";
@@ -117,18 +120,75 @@ export function createSampleState(now: Date): PlayerState {
     { eventId: "tata-sample-island", current: 2, total: 5 },
     { eventId: "pb-sample-mission", current: 1, total: 3 },
   ];
-  state.codeClaims = [
-    { codeId: "code-weeklygift", state: "AVAILABLE", updatedAt: stamp },
-    { codeId: "code-welcome2026", state: "CLAIMED", updatedAt: stamp },
-    { codeId: "code-hellotatari", state: "UNKNOWN", updatedAt: stamp },
-  ];
+  state.codeClaims = [];
   return state;
+}
+
+const ACTIONABLE = new Set(["DO_NOW", "DO_TODAY", "CLAIM_NOW", "CLAIM_LATER", "SAVE", "SPEND"]);
+
+export function truthLane(opp: OpportunityDefinition): TruthLane {
+  if (opp.sample) return "sample";
+  const freshness = opp.freshness ?? "UNVERIFIED";
+  const free = opp.free !== false && opp.cost === 0;
+  if (opp.evidence.level === "OFFICIAL" && freshness === "FRESH" && free) return "verified";
+  return "needs-verify";
+}
+
+function radarOf(lane: TruthLane, claimState: ClaimState, windowStatus: TimedWindow["status"]): RadarState {
+  if (windowStatus === "upcoming") return "UPCOMING";
+  if (windowStatus === "expired") {
+    if (claimState === "CLAIMED") return "CLAIMED";
+    if (claimState === "MISSED") return "MISSED";
+    return "EXPIRED";
+  }
+  if (lane === "needs-verify") return "NEEDS_VERIFY";
+  if (lane === "sample") {
+    if (claimState === "CLAIMED") return "CLAIMED";
+    if (claimState === "MISSED") return "MISSED";
+    if (claimState === "AVAILABLE") return "AVAILABLE";
+    return "UNKNOWN";
+  }
+  if (claimState === "CLAIMED") return "CLAIMED";
+  if (claimState === "MISSED") return "MISSED";
+  return "AVAILABLE";
+}
+
+function wallToUtc(wall: string, timeZone: string): Date {
+  const match = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::(\d{2}))?/.exec(wall);
+  if (!match) return new Date(wall);
+  return zonedTimeToUtc(
+    Number(match[1]),
+    Number(match[2]),
+    Number(match[3]),
+    Number(match[4]),
+    Number(match[5]),
+    Number(match[6] ?? 0),
+    timeZone,
+  );
+}
+
+function dateLimitedWindow(opp: OpportunityDefinition, today: string, timeZone: string, now: Date): TimedWindow | "hidden" | null {
+  if (opp.hiddenOnLocalDates?.includes(today)) return "hidden";
+  if (!opp.activeLocalDates?.length || opp.activeLocalDates.includes(today)) return null;
+  const next = opp.activeLocalDates.find((day) => day > today);
+  if (!next) return { id: `dates:${opp.id}:past`, start: null, end: null, status: "expired" };
+  const [year, month, day] = next.split("-").map(Number);
+  const start = zonedTimeToUtc(year, month, day, 0, 0, 0, timeZone);
+  const endDate = shiftDate(year, month, day, 1);
+  const end = zonedTimeToUtc(endDate.year, endDate.month, endDate.day, 0, 0, 0, timeZone);
+  return {
+    id: `dates:${opp.id}:${next}`,
+    start,
+    end,
+    status: now < start ? "upcoming" : "active",
+  };
 }
 
 function resolveEvent(event: EventDefinition, state: PlayerState, now: Date): ResolvedEvent | null {
   if (event.sample && state.mode !== "sample") return null;
-  let start: Date | null = event.start ? new Date(event.start) : null;
-  let end: Date | null = event.end ? new Date(event.end) : null;
+  const timeZone = state.timezone || "Asia/Taipei";
+  let start: Date | null = event.localStart ? wallToUtc(event.localStart, timeZone) : event.start ? new Date(event.start) : null;
+  let end: Date | null = event.localEnd ? wallToUtc(event.localEnd, timeZone) : event.end ? new Date(event.end) : null;
   if (event.sampleOffset && state.sampleAnchor) {
     const anchor = new Date(state.sampleAnchor).getTime();
     start = new Date(anchor + event.sampleOffset.startHours * 3_600_000);
@@ -242,13 +302,18 @@ export function materialize(catalog: Catalog, state: PlayerState, now: Date): Ma
     .filter((event): event is ResolvedEvent => event != null);
 
   const opportunities: ViewOpportunity[] = [];
+  const timeZone = state.timezone || "Asia/Taipei";
+  const today = localDateKey(now, timeZone);
   for (const opp of catalog.opportunities) {
     if (opp.active === false) continue;
     if (opp.sample && state.mode !== "sample") continue;
-    const window = windowFor(opp, events, state, now);
-    if (window.status === "upcoming") continue;
+    const lane = truthLane(opp);
+    const limited = dateLimitedWindow(opp, today, timeZone, now);
+    if (limited === "hidden") continue;
+    const window = limited ?? windowFor(opp, events, state, now);
+    if (window.status === "upcoming" && lane !== "verified") continue;
     const stored = state.claims.find((claim) => claim.opportunityId === opp.id && claim.windowId === window.id) ?? null;
-    const defaults: ClaimState = state.mode === "sample" ? "AVAILABLE" : "UNKNOWN";
+    const defaults: ClaimState = state.mode === "sample" && lane === "sample" ? "AVAILABLE" : "UNKNOWN";
     const claimState = resolveClaimState({
       stored,
       windowId: window.id,
@@ -256,7 +321,10 @@ export function materialize(catalog: Catalog, state: PlayerState, now: Date): Ma
       defaultState: defaults,
     });
     if (window.status === "expired" && !stored) continue;
-    const recommendation = advise(opp, claimState, window, state, now);
+    const radarState = radarOf(lane, claimState, window.status);
+    const decisionClaim: ClaimState =
+      lane === "verified" && claimState === "UNKNOWN" && window.status === "active" ? "AVAILABLE" : claimState;
+    const recommendation = advise(opp, decisionClaim, window, state, now);
     let missedPrevious = false;
     if (opp.reset.type === "daily" || opp.reset.type === "weekly") {
       const tz = state.timezone || "Asia/Taipei";
@@ -290,6 +358,16 @@ export function materialize(catalog: Catalog, state: PlayerState, now: Date): Ma
       userProgress: opp.progressFlag ? state.flags[opp.progressFlag] : undefined,
       missedPrevious,
       recommendation,
+      lane,
+      radarState,
+      freshness: (opp.freshness ?? "UNVERIFIED") as Freshness,
+      urgent:
+        lane === "verified" &&
+        radarState === "AVAILABLE" &&
+        window.end != null &&
+        window.end.getTime() - now.getTime() <= 24 * 3_600_000 &&
+        window.end.getTime() - now.getTime() >= 0,
+      opensAt: window.status === "upcoming" && window.start ? window.start.toISOString() : null,
     });
   }
 
@@ -358,8 +436,23 @@ export function materialize(catalog: Catalog, state: PlayerState, now: Date): Ma
       ).length,
       unclaimed: opportunities.filter((item) => item.claimState === "AVAILABLE").length,
       completion: tracked.length === 0 ? 0 : claimed / tracked.length,
+      verifiedOpen: opportunities.filter((item) => item.lane === "verified" && item.radarState === "AVAILABLE").length,
+      verifiedClaimed: opportunities.filter((item) => item.lane === "verified" && item.radarState === "CLAIMED").length,
+      expiringDay: opportunities.filter((item) => item.urgent).length,
+      needsVerify: opportunities.filter((item) => item.lane === "needs-verify").length,
     },
   };
+}
+
+export function verifiedActions(view: Materialized): Recommendation[] {
+  const open = new Set(
+    view.opportunities.filter((item) => item.lane === "verified" && item.radarState === "AVAILABLE").map((item) => item.id),
+  );
+  return view.recommendations.filter((item) => open.has(item.opportunityId) && ACTIONABLE.has(item.kind));
+}
+
+export function verifiedTop3(view: Materialized): Recommendation[] {
+  return verifiedActions(view).slice(0, 3);
 }
 
 export function setClaim(

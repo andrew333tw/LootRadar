@@ -9,6 +9,19 @@ export type EvidenceLevel =
 
 export type ClaimState = "AVAILABLE" | "CLAIMED" | "MISSED" | "UNKNOWN";
 
+export type Freshness = "FRESH" | "STALE" | "UNVERIFIED";
+
+export type TruthLane = "verified" | "needs-verify" | "sample";
+
+export type RadarState =
+  | "AVAILABLE"
+  | "CLAIMED"
+  | "MISSED"
+  | "UPCOMING"
+  | "EXPIRED"
+  | "NEEDS_VERIFY"
+  | "UNKNOWN";
+
 export type RecommendationKind =
   | "DO_NOW"
   | "DO_TODAY"
@@ -88,6 +101,13 @@ export interface OpportunityDefinition {
   sample?: boolean;
   prerequisite?: string;
   progressFlag?: string;
+  freshness?: Freshness;
+  verifiedAt?: string | null;
+  sourceType?: "official" | "community" | "inferred" | "player" | "unknown";
+  free?: boolean;
+  recurrence?: "daily" | "weekly" | "event" | "one-time" | "unknown";
+  activeLocalDates?: string[];
+  hiddenOnLocalDates?: string[];
 }
 
 export interface EventDefinition {
@@ -98,6 +118,9 @@ export interface EventDefinition {
   end: string | null;
   sampleOffset?: { startHours: number; endHours: number };
   sample?: boolean;
+  localStart?: string | null;
+  localEnd?: string | null;
+  freshness?: Freshness;
   freeRewards: { label: string; resourceId?: string; quantity: number | null }[];
   requiredResourceId?: string;
   evidence: Evidence;
@@ -112,6 +135,8 @@ export interface RedeemCodeDefinition {
   expiry: string | null;
   evidence: Evidence;
   sample?: boolean;
+  freshness?: Freshness;
+  verifiedAt?: string | null;
 }
 
 export interface GameBundle {
@@ -222,6 +247,11 @@ export interface ViewOpportunity {
   userProgress?: string;
   missedPrevious: boolean;
   recommendation: Recommendation;
+  lane: TruthLane;
+  radarState: RadarState;
+  freshness: Freshness;
+  urgent: boolean;
+  opensAt: string | null;
 }
 
 export interface ViewEvent {
@@ -250,5 +280,9 @@ export interface Materialized {
     expiring: number;
     unclaimed: number;
     completion: number;
+    verifiedOpen: number;
+    verifiedClaimed: number;
+    expiringDay: number;
+    needsVerify: number;
   };
 }

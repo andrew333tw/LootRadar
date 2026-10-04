@@ -141,6 +141,15 @@ img { max-width: 100%; height: auto; }
   border: 1px solid var(--line);
   border-radius: 14px;
 }
+.top3 li.urgent,
+.card.urgent { border-color: var(--urgent); }
+.block-title { margin: 8px 0; font-size: 18px; }
+.plain { margin: 8px 0 0; padding-left: 18px; }
+.fold { margin: 16px 0; }
+.fold summary { cursor: pointer; font-weight: 700; }
+.source { margin-top: 8px; }
+.source summary { cursor: pointer; color: var(--muted); font-size: 13px; }
+.text-button { margin: 0 0 12px; padding: 8px 0; background: transparent; color: var(--accent); font-weight: 700; }
 .top3 p, .fine, .reward, .action-line { margin: 6px 0; }
 .top3 p, .fine { color: var(--muted); font-size: 13px; }
 .rank {

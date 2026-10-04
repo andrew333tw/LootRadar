@@ -82,6 +82,11 @@ function pad(value: number) {
   return String(value).padStart(2, "0");
 }
 
+export function localDateKey(now: Date, timeZone: string): string {
+  const parts = zonedParts(now, timeZone);
+  return `${parts.year}-${pad(parts.month)}-${pad(parts.day)}`;
+}
+
 export function dailyWindow(now: Date, hour: number, minute: number, timeZone: string): WindowRange {
   const parts = zonedParts(now, timeZone);
   const todayStart = zonedTimeToUtc(parts.year, parts.month, parts.day, hour, minute, 0, timeZone);

@@ -1,5 +1,47 @@
 [
   {
+    "id": "pb-halloween-2026",
+    "gameId": "pikmin-bloom",
+    "title": "萬聖節彩繪玻璃",
+    "start": null,
+    "end": null,
+    "localStart": "2026-10-01T00:00:00",
+    "localEnd": "2026-11-01T00:00:00",
+    "freshness": "FRESH",
+    "freeRewards": [
+      { "label": "活動挑戰的隨機獎勵，可能含彩繪玻璃餅乾、花苗或花瓣", "quantity": null },
+      { "label": "打掉萬聖節蘑菇後的 Mystery Box", "quantity": null }
+    ],
+    "evidence": {
+      "level": "OFFICIAL",
+      "source": "https://pikminbloom.com/news/oct26-halloweenevent",
+      "retrievedAt": "2026-10-04",
+      "note": "本地時間 2026-10-01 00:00 到 2026-10-31 23:59。Premium Event Pass 與禮包是付費，不列入免費。"
+    },
+    "summary": "免費的是活動挑戰、種花與萬聖節蘑菇的 Mystery Box。餅乾在活動結束後沒有用途。付費通行證不算。"
+  },
+  {
+    "id": "pb-community-day-2026-10",
+    "gameId": "pikmin-bloom",
+    "title": "10 月 Community Day",
+    "start": null,
+    "end": null,
+    "localStart": "2026-10-10T00:00:00",
+    "localEnd": "2026-10-12T00:00:00",
+    "freshness": "FRESH",
+    "freeRewards": [
+      { "label": "任一天走滿 10,000 步的薊花花徽", "quantity": 1 },
+      { "label": "花苗 1.5 倍生長", "quantity": null }
+    ],
+    "evidence": {
+      "level": "OFFICIAL",
+      "source": "https://pikminbloom.com/news/oct26-communityday",
+      "retrievedAt": "2026-10-04",
+      "note": "本地時間 10/10 00:00 到 10/11 23:59。禮包與任務券是付費。10/10 沒走完，進度會在 10/11 00:00 重置。"
+    },
+    "summary": "還沒開始。免費的是步數花徽、薊花巨大花，以及花苗加速。商店禮包不是免費。"
+  },
+  {
     "id": "pb-sample-mission",
     "gameId": "pikmin-bloom",
     "title": "季節活動任務（範例）",
@@ -7,6 +49,7 @@
     "end": null,
     "sample": true,
     "sampleOffset": { "startHours": -30, "endHours": 36 },
+    "freshness": "UNVERIFIED",
     "freeRewards": [
       { "label": "活動任務免費獎勵", "quantity": null },
       { "label": "活動貨幣", "resourceId": "pb-event-currency", "quantity": null }

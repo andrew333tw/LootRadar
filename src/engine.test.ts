@@ -12,7 +12,7 @@ import {
   saveState,
 } from "./domain/persist";
 import { applyIngest, buildDraft } from "./domain/ingest";
-import { createPersonalState, createSampleState, materialize, mergeCatalog, setClaim } from "./domain/engine";
+import { createPersonalState, createSampleState, materialize, mergeCatalog, setClaim, verifiedTop3 } from "./domain/engine";
 import { loadCatalog } from "./domain/catalog";
 
 const noon = new Date("2026-10-04T04:00:00.000Z");
@@ -387,5 +387,113 @@ describe("catalog, sample, and goals", () => {
     const next = setClaim(catalog, state, "pb-free-detector", "CLAIMED", noon);
     const view = materialize(catalog, next, noon);
     expect(view.opportunities.find((item) => item.id === "pb-free-detector")?.claimState).toBe("CLAIMED");
+  });
+});
+
+describe("current truth", () => {
+  it("keeps sample, stale, and unverified items out of today's verified top 3", () => {
+    const catalog = loadCatalog();
+    const personal = createPersonalState(noon);
+    const view = materialize(catalog, personal, noon);
+    expect(view.opportunities.every((item) => item.lane !== "sample")).toBe(true);
+    expect(view.opportunities.filter((item) => item.gameId === "tata-adventure" && item.lane === "verified")).toEqual([]);
+    for (const item of view.opportunities.filter((entry) => entry.lane === "verified")) {
+      expect(item.freshness).toBe("FRESH");
+      expect(item.evidence.level).toBe("OFFICIAL");
+    }
+    expect(view.opportunities.find((item) => item.id === "pb-halloween-mushrooms")?.quantityLabel).toBe("數量未驗證");
+    expect(view.opportunities.find((item) => item.id === "pb-halloween-giant")?.radarState).toBe("AVAILABLE");
+    expect(view.opportunities.find((item) => item.id === "pb-community-day-oct")?.radarState).toBe("UPCOMING");
+    expect(catalog.codes.every((code) => code.freshness === "STALE" && code.expiry == null)).toBe(true);
+
+    const top = verifiedTop3(view);
+    expect(top.map((item) => item.opportunityId)).toEqual(["pb-mushroom-tries", "pb-free-detector", "pb-halloween-giant"]);
+    expect(top.some((item) => item.opportunityId === "pb-community-day-oct")).toBe(false);
+    expect(view.opportunities.find((item) => item.id === "pb-mushroom-tries")?.urgent).toBe(true);
+
+    const claimed = setClaim(catalog, personal, "pb-mushroom-tries", "CLAIMED", noon);
+    const afterClaim = verifiedTop3(materialize(catalog, claimed, noon));
+    expect(afterClaim.map((item) => item.opportunityId)).not.toContain("pb-mushroom-tries");
+    expect(afterClaim[0]?.opportunityId).not.toBe(top[0]?.opportunityId);
+
+    const coins = {
+      ...personal,
+      goals: personal.goals.map((goal) =>
+        goal.goalId === "pb-coins" ? { ...goal, enabled: true, weight: 1 } : { ...goal, enabled: false },
+      ),
+    };
+    expect(verifiedTop3(materialize(catalog, coins, noon))[0]?.opportunityId).toBe("pb-bonus-coins");
+  });
+
+  it("does not let a high guessed reward or an expired event enter the verified top 3", () => {
+    const catalog = loadCatalog();
+    const extended = mergeCatalog(catalog, {
+      game: { id: "truth-probe", name: "Truth Probe", shortName: "Probe", adapterVersion: "1" },
+      resources: [],
+      goals: [],
+      events: [
+        {
+          id: "probe-old",
+          gameId: "truth-probe",
+          title: "已結束",
+          start: "2026-10-01T00:00:00.000Z",
+          end: "2026-10-02T00:00:00.000Z",
+          freeRewards: [{ label: "過期獎", quantity: 1 }],
+          evidence: { level: "OFFICIAL", source: "https://example.invalid/old", retrievedAt: "2026-10-04" },
+          summary: "已結束",
+          freshness: "FRESH",
+        },
+      ],
+      codes: [],
+      opportunities: [
+        {
+          id: "probe-expired",
+          gameId: "truth-probe",
+          title: "過期高分",
+          category: "event",
+          reward: { resourceId: null, quantity: 1, approximate: false, label: "過期" },
+          estimatedValue: 999,
+          estimatedEffort: 0.1,
+          cost: 0,
+          reset: { type: "event", eventId: "probe-old" },
+          eventId: "probe-old",
+          evidence: { level: "OFFICIAL", source: "https://example.invalid/old", retrievedAt: "2026-10-04" },
+          freshness: "FRESH",
+          free: true,
+          policy: "claim",
+          laterValue: 0,
+          goalTags: [],
+          action: "不該出現",
+          why: "已結束",
+          active: true,
+        },
+        {
+          id: "probe-rumor",
+          gameId: "truth-probe",
+          title: "未核實高分",
+          category: "daily",
+          reward: { resourceId: null, quantity: null, approximate: false, label: "未知" },
+          estimatedValue: 999,
+          estimatedEffort: 0.1,
+          cost: 0,
+          reset: { type: "daily", hour: 0, minute: 0 },
+          evidence: { level: "COMMUNITY_REPORT", source: "rumor", retrievedAt: "2026-10-04" },
+          freshness: "UNVERIFIED",
+          free: true,
+          policy: "claim",
+          laterValue: 0,
+          goalTags: [],
+          action: "不該進前三",
+          why: "沒有官方證據",
+          active: true,
+        },
+      ],
+    });
+    const view = materialize(extended, createPersonalState(noon), noon);
+    const ids = verifiedTop3(view).map((item) => item.opportunityId);
+    expect(ids).not.toContain("probe-expired");
+    expect(ids).not.toContain("probe-rumor");
+    expect(view.opportunities.find((item) => item.id === "probe-rumor")?.radarState).toBe("NEEDS_VERIFY");
+    expect(view.opportunities.some((item) => item.id === "probe-expired")).toBe(false);
   });
 });

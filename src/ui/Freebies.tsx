@@ -1,7 +1,6 @@
 import { useState } from "react";
 import type { ClaimState } from "../domain/types";
 import { ClaimSwitch, OpportunityCard } from "./bits";
-import { evidenceLabel } from "./format";
 import { usePlayer } from "./player";
 
 const FILTERS = [
@@ -90,13 +89,32 @@ export function Freebies() {
               存進我的兌換碼
             </button>
           </form>
-          {codes.map((item) => {
+          {codes.some((item) => item.evidence.source === "玩家自行輸入") ? <h2>我加的兌換碼</h2> : null}
+          {codes
+            .filter((item) => item.evidence.source === "玩家自行輸入")
+            .map((item) => {
+              const claim = state.codeClaims.find((entry) => entry.codeId === item.id)?.state ?? "UNKNOWN";
+              return (
+                <article key={item.id} className="card">
+                  <header className="card-head">
+                    <h3>{item.code}</h3>
+                    <span className="evidence">玩家自己加的</span>
+                  </header>
+                  <p>{item.rewardLabel}</p>
+                  <p className="fine">{item.expiry ? `到期 ${item.expiry}` : "你沒填到期日"}</p>
+                  <ClaimSwitch value={claim as ClaimState} onChange={(next) => setCodeClaim(item.id, next)} />
+                </article>
+              );
+            })}
+          <h2>舊社群清單</h2>
+          <p className="fine">沒有在 2026-10-04 核到還能用，也沒有到期日。不要當成今天的兌換碼。</p>
+          {codes.filter((item) => item.evidence.source !== "玩家自行輸入").map((item) => {
             const claim = state.codeClaims.find((entry) => entry.codeId === item.id)?.state ?? "UNKNOWN";
             return (
               <article key={item.id} className="card">
                 <header className="card-head">
                   <h3>{item.code}</h3>
-                  <span className={`evidence evidence-${item.evidence.level}`}>{evidenceLabel(item.evidence.level)}</span>
+                  <span className={`evidence evidence-${item.evidence.level}`}>不是現役</span>
                 </header>
                 <p>{item.rewardLabel}</p>
                 <p className="fine">{item.expiry ? `到期 ${item.expiry}` : "到期未知"} · {catalog.games.find((game) => game.id === item.gameId)?.shortName}</p>

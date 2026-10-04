@@ -13,11 +13,13 @@ Schema version: `1`
 - `opportunities.json`
 - `codes.json`（有兌換碼的遊戲）
 
-`Opportunity` 重要欄位：`gameId`、`title`、`category`、`reward`、`estimatedValue`、`marginalValue`、`estimatedEffort`、`cost`、`reset`、`evidence`、`policy`、`laterValue`、`goalTags`、`action`、`why`。
+`Opportunity` 重要欄位：`gameId`、`title`、`category`、`reward`、`estimatedValue`、`marginalValue`、`estimatedEffort`、`cost`、`reset`、`evidence`、`freshness`、`verifiedAt`、`policy`、`laterValue`、`goalTags`、`action`、`why`。
 
-`reward.quantity = null` 代表數量沒有驗證，畫面顯示「數量未驗證」。`approximate: true` 代表只是約略，V1 的塔塔大樹用這個，而且數量仍是 null。
+`freshness` 是 `FRESH`、`STALE` 或 `UNVERIFIED`。只有 `evidence.level = OFFICIAL`、`freshness = FRESH`、而且 `cost = 0` 會進「今天確定可拿」。過期、即將開始、待確認和範例都不會進前三。
 
-`sample: true` 的活動與機會只在範例模式出現。
+`reward.quantity = null` 代表數量沒有驗證，畫面顯示「數量未驗證」，不可以補 0。`approximate: true` 代表只是約略。
+
+`sample: true` 的活動與機會只在範例模式出現，而且首頁會標成範例推演。第一次沒有本機資料時，預設是「我的資料」，不是範例。兌換碼沒有到期日就標 `STALE`，不當現役碼。
 
 ## 玩家狀態
 

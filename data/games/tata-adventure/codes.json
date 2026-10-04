@@ -10,7 +10,9 @@
       "source": "https://www.bluestacks.com/tw/blog/redeem-codes/clash-of-critters-redeem-codes-tw.html",
       "retrievedAt": "2026-10-04",
       "note": "獎勵只來自單一整理文，且 2026-10-04 沒有在遊戲內複核。可能已失效。"
-    }
+    },
+    "freshness": "STALE",
+    "verifiedAt": null
   },
   {
     "id": "code-tatamoon",
@@ -23,7 +25,9 @@
       "source": "https://www.ludens.com.tw/cczh-coupon/",
       "retrievedAt": "2026-10-04",
       "note": "Ludens 頁面標最後更新 2026-09-29。是否仍可兌換未知。"
-    }
+    },
+    "freshness": "STALE",
+    "verifiedAt": null
   },
   {
     "id": "code-welcome2026",
@@ -36,7 +40,9 @@
       "source": "https://www.ludens.com.tw/cczh-coupon/",
       "retrievedAt": "2026-10-04",
       "note": "多個整理站都列過此碼。有效期限未知。"
-    }
+    },
+    "freshness": "STALE",
+    "verifiedAt": null
   },
   {
     "id": "code-welcomegift",
@@ -48,7 +54,9 @@
       "level": "COMMUNITY_REPORT",
       "source": "https://www.bluestacks.com/tw/blog/redeem-codes/clash-of-critters-redeem-codes-tw.html",
       "retrievedAt": "2026-10-04"
-    }
+    },
+    "freshness": "STALE",
+    "verifiedAt": null
   },
   {
     "id": "code-hellotatari",
@@ -61,6 +69,8 @@
       "source": "https://www.bluestacks.com/tw/blog/redeem-codes/clash-of-critters-redeem-codes-tw.html",
       "retrievedAt": "2026-10-04",
       "note": "BlueStacks 文寫部分來源標示已過期或接近過期。預設不要當成還能領。"
-    }
+    },
+    "freshness": "STALE",
+    "verifiedAt": null
   }
 ]

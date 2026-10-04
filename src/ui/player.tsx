@@ -41,9 +41,9 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
   const [now, setNow] = useState(() => new Date());
   const [state, setState] = useState<PlayerState>(() => {
     try {
-      return loadState(browserStore()) ?? createSampleState(new Date());
+      return loadState(browserStore()) ?? createPersonalState(new Date());
     } catch {
-      return createSampleState(new Date());
+      return createPersonalState(new Date());
     }
   });
 

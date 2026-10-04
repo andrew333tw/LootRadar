@@ -1,4 +1,5 @@
-import { evidenceLabel, kindLabel } from "./format";
+import { verifiedActions } from "../domain/engine";
+import { ACTIONABLE, evidenceLabel, kindLabel } from "./format";
 import { usePlayer } from "./player";
 
 export function Advisor() {
@@ -27,7 +28,7 @@ export function Advisor() {
         </ul>
       </section>
       <ol className="advice">
-        {view.recommendations.map((item) => (
+        {verifiedActions(view).map((item) => (
           <li key={item.id} className="card">
             <header className="card-head">
               <h2>{item.action}</h2>
@@ -60,6 +61,17 @@ export function Advisor() {
           </li>
         ))}
       </ol>
+      <details className="fold">
+        <summary>沒排進來的項目</summary>
+        <p className="fine">待確認、範例、已過期或已領的項目不跟今天已核實的前幾名混在一起。</p>
+        <ul className="plain">
+          {view.recommendations
+            .filter((item) => !verifiedActions(view).some((kept) => kept.id === item.id) && ACTIONABLE.has(item.kind))
+            .map((item) => (
+              <li key={item.id}>{item.action}</li>
+            ))}
+        </ul>
+      </details>
     </div>
   );
 }
