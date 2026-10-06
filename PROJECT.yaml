@@ -59,7 +59,7 @@ routing:
 legacy:
   old_paths:
     - C:\Andrew\Projects\lootradar
-    - C:\Users\小安z\Desktop\Andrew\SideProject\LootRadar
+    - %USERPROFILE%\Desktop\Andrew\SideProject\LootRadar
   migration: 1151007-workspace-canonicalization
   receipt: C:\Andrew\Agents\Governance\workspace-governance\receipts\workspace-canonicalization-1151007.md
 last_verified:
