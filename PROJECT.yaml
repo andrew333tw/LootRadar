@@ -1,58 +1,68 @@
-# PROJECT.yaml — canonical project identity (Andrew Workspace contract andrew-workspace-project/v1, t635u).
-# Schema + rules: C:\Andrew\Platform\Governance\workspace-governance (docs/PROJECT_ANATOMY.md). No secret values here.
-schema: andrew-workspace-project/v1
-project_id: lootradar
+# PROJECT.yaml — identity manifest v2 (Andrew Workspace, authority-first). Schema: workspace-governance/schemas/manifest.schema.json
+schema: andrew-workspace-manifest/v2
+id: lootradar
 display_name: LootRadar (今天還有什麼免費的？)
-domain: PERSONAL
-canonical_path: C:\Andrew\Projects\lootradar
+kind: project
+authority_plane: Personal
+organization: null
+canonical_root: C:\Andrew\Personal\Projects\lootradar
+lifecycle: ACTIVE
+domain_tags:
+  - web-app
+  - public
+owner: Andrew (Personal)
+write_owner: Agents within an Andrew-authorized Horizon
+authority_boundary: Personal project; workspace governance grants no business, account or runtime authority
 repo:
   type: git
+  path: .
   default_branch: master
   remotes:
     - name: origin
       url: https://github.com/andrew333tw/LootRadar.git
+  visibility: PUBLIC
   backup:
     kind: remote
     evidence:
-      - gh repo view -> PUBLIC; local refs equal git ls-remote (t635u)
-repo_visibility: PUBLIC
-status: ACTIVE
+      - origin https://github.com/andrew333tw/LootRadar.git
+  manifest_tracking: committed
+  history_note: null
 runtime:
   kind: local-dev
-  worktree_root: C:\AndrewRuntime\worktrees\lootradar
-  cache_root: C:\AndrewRuntime\cache\lootradar
-  tmp_root: C:\AndrewRuntime\tmp
+  worktree_root: C:\AndrewRuntime\worktrees\personal\lootradar
+  cache_root: C:\AndrewRuntime\cache\personal\lootradar
+  state_paths: []
+  tool_managed_worktree_roots: []
   scheduled_tasks: []
   services: []
   local_ports:
     - 5173
     - 4173
+  notes: []
+secret_policy:
+  vault_scope: null
+  refs: []
   notes:
-    - npm run dev (vite, default 5173); npm run preview (4173); npm test; npm run lint; npm run verify:pwa.
-production:
-  exists: true
-  kind: github-pages
-  target: GitHub Pages from branch gh-pages of andrew333tw/LootRadar
-  url: https://andrew333tw.github.io/LootRadar/
-  notes:
-    - Served from the gh-pages branch on GitHub; not built from this folder at runtime, so the move does not change production (HTTP 200 before and after t635u).
-    - Repo is PUBLIC (pre-existing). Do not commit private data or local absolute paths.
-secret_refs: []
-external_services:
-  - name: GitHub
-    account_ref: github-personal
-    purpose: Public remote + GitHub Pages hosting
+    - No secret files in the tree.
+environments:
+  production:
+    exists: true
+    kind: github-pages
+    target: GitHub Pages from branch gh-pages of andrew333tw/LootRadar
+    url: https://andrew333tw.github.io/LootRadar/
+    notes:
+      - "Repo is PUBLIC (pre-existing): never commit private data or local absolute paths."
+dependencies: []
 routing:
   identity: lootradar
   acp_service_id: lootradar
-  bob: null
-  claude: null
-  codex: null
-archive_policy:
-  archive_root: C:\Andrew\Archive\<YYYY>\lootradar\
-  notes:
-    - Pre-migration evidence lives in Archive; git history stays in git.
+legacy:
+  old_paths:
+    - C:\Andrew\Projects\lootradar
+    - C:\Users\小安z\Desktop\Andrew\SideProject\LootRadar
+  migration: 1151007-workspace-canonicalization
+  receipt: C:\Andrew\Agents\Governance\workspace-governance\receipts\workspace-canonicalization-1151007.md
 last_verified:
-  at: 2026-10-06T16:20:46+08:00
-  by: t635u
-  evidence: C:\Andrew\Platform\Governance\workspace-governance\receipts\lootradar-t635u.md
+  at: 2026-10-07T02:24:29+08:00
+  by: 1151007-workspace-canonicalization
+  evidence: C:\Andrew\Agents\Governance\workspace-governance\receipts\workspace-canonicalization-1151007.md
