@@ -13,8 +13,9 @@ LootRadar 是給 Andrew 自己用的免費資源決策工具。它看的是你�
 
 ## 開啟
 
+在 repo 根目錄執行：
+
 ```powershell
-cd SideProject/LootRadar
 npm install
 npm run build
 npm run preview
